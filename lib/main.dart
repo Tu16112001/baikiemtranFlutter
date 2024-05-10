@@ -59,40 +59,63 @@ class _MyHomePageState extends State<MyHomePage> {
             Form(
               key: _formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  TextFormField(
-                    controller: _itemController,
-                    decoration: InputDecoration(labelText: 'Item'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter an item';
-                      }
-                      return null;
-                    },
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: _itemController,
+                          decoration: InputDecoration(labelText: 'Item'),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter an item';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: TextFormField(
+                          controller: _itemNameController,
+                          decoration: InputDecoration(labelText: 'Item Name'),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter an item name';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  TextFormField(
-                    controller: _itemNameController,
-                    decoration: InputDecoration(labelText: 'Item Name'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter an item name';
-                      }
-                      return null;
-                    },
-                  ),
-                  TextFormField(
-                    controller: _quantityController,
-                    decoration: InputDecoration(labelText: 'Quantity'),
-                    keyboardType: TextInputType.number,
-                  ),
-                  TextFormField(
-                    controller: _priceController,
-                    decoration: InputDecoration(labelText: 'Price'),
-                    keyboardType: TextInputType.number,
-                  ),
-                  TextFormField(
-                    controller: _currencyController,
-                    decoration: InputDecoration(labelText: 'Currency'),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: _quantityController,
+                          decoration: InputDecoration(labelText: 'Quantity'),
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: TextFormField(
+                          controller: _priceController,
+                          decoration: InputDecoration(labelText: 'Price'),
+                          keyboardType: TextInputType.number,
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: TextFormField(
+                          controller: _currencyController,
+                          decoration: InputDecoration(labelText: 'Currency'),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
@@ -120,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
+
             SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
@@ -151,12 +175,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       DataCell(
                         Row(
                           children: [
-                            IconButton(
-                              icon: Icon(Icons.edit),
-                              onPressed: () {
-                                // Add edit functionality here
-                              },
-                            ),
                             IconButton(
                               icon: Icon(Icons.delete),
                               onPressed: () {
